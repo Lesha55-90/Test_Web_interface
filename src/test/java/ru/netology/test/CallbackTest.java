@@ -40,12 +40,12 @@ public class CallbackTest {
 
     @Test
     public void shouldTestValidName()  {
-        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иванов Иван Иванович");
-        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79000000000");
-        driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Иванов Иван Иванович");
+        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79000000000");
+        driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("button.button")).click();
-        assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.",
-                driver.findElement(By.cssSelector("data-test-id=order-success")).getText().trim());
+        String text = driver.findElement(By.cssSelector("data-test-id=order-success")).getText();
+        assertEquals("  Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text);
 
     }
 
